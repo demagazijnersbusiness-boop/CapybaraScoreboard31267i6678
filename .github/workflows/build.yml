@@ -11,9 +11,9 @@ jobs:
         with:
           distribution: temurin
           java-version: '25'
-      - run: mvn -B clean package
-        working-directory: CapybaraScoreboard
+      - name: Build
+        run: mvn -B clean package -f "$(find . -name pom.xml | head -n 1)"
       - uses: actions/upload-artifact@v4
         with:
           name: CapybaraScoreboard
-          path: CapybaraScoreboard/target/CapybaraScoreboard-1.0.0.jar
+          path: '**/target/CapybaraScoreboard-1.0.0.jar'
